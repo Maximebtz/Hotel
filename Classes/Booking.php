@@ -4,27 +4,54 @@
 
         
     //Attributs
+        private Hotel $hotel;
         private Customer $customer;
         private Room $room;
         private DateTime $arrDate;
         private DateTime $depDate;
+        // private array $booking;
 
 
     //__construct
-        public function __construct(Customer $customer, Room $room, string $arrDate, string $depDate){
+        public function __construct(Hotel $hotel, Customer $customer, Room $room, string $arrDate, string $depDate){
             
+            $this->hotel = $hotel;
             $this->customer = $customer;
             $this->room = $room;
             $this->arrDate = new DateTime($arrDate);
             $this->depDate = new DateTime($depDate);
 
+
+            $this->hotel->addBooking($this);
+            $this->room->addBooking($this);
+        //     $this->booking = [];
+            
         }
+        
+        
+        //Methods
+        
+        // public function addBooking(Booking $booking){
+        //         return $this->booking[] = $booking;
+        // }
 
+        
 
-    //Methods
+        //Getter and Setters
 
-
-    //Getters and Setters
+        //Hotel
+        public function getHotel()
+        {
+                return $this->hotel;
+        }
+    
+        public function setHotel($hotel)
+        {
+                $this->hotel = $hotel;
+    
+                return $this;
+        }
+        
 
         //Customer
         public function getCustomer()
@@ -55,7 +82,7 @@
         //Arrival Date
         public function getArrDate()
         {
-                return $this->arrDate;
+                return $this->arrDate->format("d-m-Y");
         }
 
         public function setArrDate($arrDate)
@@ -68,7 +95,7 @@
         //Departure Date
         public function getDepDate()
         {
-                return $this->depDate;
+                return $this->depDate->format("d-m-Y");
         }
 
         public function setDepDate($depDate)
@@ -77,5 +104,19 @@
 
                 return $this;
         }
+
+
+        // //Booking 
+        // public function getBooking()
+        // {
+        //         return $this->booking;
+        // }
+
+        // public function setBooking($booking)
+        // {
+        //         $this->booking = $booking;
+
+        //         return $this;
+        // }
     }
 ?>

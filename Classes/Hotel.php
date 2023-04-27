@@ -3,9 +3,11 @@
     class Hotel{
 
     //Attributs
+    private Booking $booking;
         private string $hotelName;
         private string $hotelAdress;
         private int $numberOfRoom;
+        private array $bookings;
     
     //__construct
         public function __construct(string $hotelName, string $hotelAdress, int $numberOfRoom){
@@ -14,12 +16,24 @@
             $this->hotelAdress = $hotelAdress;
             $this->numberOfRoom = $numberOfRoom;
 
+            $this->bookings = [];
         }
 
 
 
     //Methods
 
+        public function addBooking(Booking $booking){
+            return $this->bookings[] = $booking;
+        }
+
+        public function displayAvailableRoom(){
+            return "<h2>" . $this . "</h2>".
+                $this->getHotelAdress() . "<br>" .
+                "Number of rooms : " . $this->numberOfRoom . "<br>
+                Number of booked rooms : <br> 
+                Number of available rooms : <br>";
+        }
 
     //Getters and Setters
     
@@ -62,8 +76,21 @@
                 return $this;
         }
 
+        //Booking
+        public function getBookings()
+        {
+                return $this->booking;
+        }
+
+        public function setBookings($booking)
+        {
+                $this->booking = $booking;
+
+                return $this;
+        }
+        public function __toString(){
+            return $this->getHotelName();
+        }
     }
-
-
 
 ?>
