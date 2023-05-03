@@ -10,6 +10,7 @@
         private bool $wifi;
         private bool $status;
         private array $booking;
+        private array $bookedRoom;
 
     //__construct
         public function __construct(Hotel $hotel, int $nRoom, string $nbBed, float $price, bool $wifi){
@@ -19,7 +20,7 @@
             $this->nbBed = $nbBed;
             $this->price = $price;
             $this->wifi = $wifi;
-
+            
             $this->booking = [];
             
         }
@@ -55,7 +56,7 @@
         {
                 $this->nRoom = $nRoom;
 
-                return $this;
+                return "Room ". $this;
         }
 
         //NbBed
@@ -129,6 +130,19 @@
 
         public function __toString(){
                 return "Room ". $this->nRoom . " : " . $this->nbBed . ", " . $this->price . "$, " . $this->getWifi() . ".";
+        }
+
+         
+        public function getBookedRoom()
+        {
+                return $this->bookedRoom;
+        }
+
+        public function setBookedRoom($bookedRoom)
+        {
+                $this->bookedRoom = $bookedRoom;
+
+                return $this;
         }
     }
 ?>
