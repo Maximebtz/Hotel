@@ -3,7 +3,7 @@
     class Hotel{
 
     //Attributs
-    private Booking $booking;
+        private Booking $booking;
         private string $hotelName;
         private string $hotelAdress;
         private int $numberOfRoom;
@@ -28,11 +28,20 @@
         }
 
         public function displayAvailableRoom(){
-            return "<h2>" . $this . "</h2>".
+            $availableRooms = $this->numberOfRoom - $this->countReservedRooms(); //Soustraction par rapport au nombre de chambres intitial
+            return "<h2>" . $this . "</h2><p>".
                 $this->getHotelAdress() . "<br>" .
                 "Number of rooms : " . $this->numberOfRoom . "<br>
-                Number of booked rooms : <br> 
-                Number of available rooms : <br>";
+                Number of booked rooms : " . $this->countReservedRooms() . "<br> 
+                Number of available rooms : " . $availableRooms . "</p><br>";
+        }
+
+        public function countReservedRooms() { //Fonction qui compte le nombre de chambres réservées
+            $count = 0;
+            foreach ($this->bookings as $booking) {
+                $count += $booking->getNumberOfRooms();
+            }
+            return $count;
         }
 
     //Getters and Setters

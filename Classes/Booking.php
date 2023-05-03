@@ -9,7 +9,6 @@
         private Room $room;
         private DateTime $arrDate;
         private DateTime $depDate;
-        // private array $booking;
 
 
     //__construct
@@ -21,20 +20,16 @@
             $this->arrDate = new DateTime($arrDate);
             $this->depDate = new DateTime($depDate);
 
-
             $this->hotel->addBooking($this);
             $this->room->addBooking($this);
-        //     $this->booking = [];
             
         }
         
         
         //Methods
-        
-        // public function addBooking(Booking $booking){
-        //         return $this->booking[] = $booking;
-        // }
-
+        public function getNumberOfRooms() { //Ramener le n° de chambre pour la fonction countReservedRoom()
+                return $this->room->getNRoom();
+            }
         
 
         //Getter and Setters
@@ -104,19 +99,5 @@
 
                 return $this;
         }
-
-
-        // //Booking 
-        // public function getBooking()
-        // {
-        //         return $this->booking;
-        // }
-
-        // public function setBooking($booking)
-        // {
-        //         $this->booking = $booking;
-
-        //         return $this;
-        // }
     }
 ?>
