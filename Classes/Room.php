@@ -4,16 +4,16 @@
 
     //Attributs
         private Hotel $hotel;
-        private int $nRoom;
+        private string $nRoom;
         private string $nbBed;
         private float $price;
         private bool $wifi;
         private bool $status;
-        private array $booking;
+        private array $bookings;
         private array $bookedRoom;
 
     //__construct
-        public function __construct(Hotel $hotel, int $nRoom, string $nbBed, float $price, bool $wifi){
+        public function __construct(Hotel $hotel, string $nRoom, string $nbBed, float $price, bool $wifi){
             
             $this->hotel = $hotel;
             $this->nRoom = $nRoom;
@@ -21,16 +21,20 @@
             $this->price = $price;
             $this->wifi = $wifi;
             
-            $this->booking = [];
+            $this->bookings = [];
+
+            $this->hotel->addRoomStatus($this);
             
         }
 
 
     //Methods
         public function addBooking(Booking $booking){
-                return $this->booking[] = $booking;
+                return $this->bookings[] = $booking;
         }
 
+
+        
     //Gettters and Setters
 
         //Hotel
@@ -56,7 +60,7 @@
         {
                 $this->nRoom = $nRoom;
 
-                return "Room ". $this;
+                return $this;
         }
 
         //NbBed
@@ -88,7 +92,7 @@
         //Wifi
         public function getWifi()
         {
-                if($this->wifi === true){
+                if($this->wifi == true){
                         return "Wifi : Yes";
                 }else{
                         return "Wifi : No";
@@ -105,7 +109,11 @@
         //Status
         public function getStatus()
         {
-                return $this->status;
+                if($this->wifi == true){
+                        return "<span class='available'>AVAILEABALE</span>";
+                }else{
+                        return "<span class='unvailable'>UNAVAILEABALE</span>";
+                }
         }
 
         public function setStatus($status)
@@ -118,12 +126,12 @@
         //Booking/ 
         public function getBooking()
         {
-                return $this->booking;
+                return $this->bookings;
         }
  
-        public function setBooking($booking)
+        public function setBooking($bookings)
         {
-                $this->booking = $booking;
+                $this->bookings = $bookings;
 
                 return $this;
         }
@@ -144,5 +152,8 @@
 
                 return $this;
         }
+
+        
+        
     }
 ?>

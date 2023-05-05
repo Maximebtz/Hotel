@@ -5,6 +5,7 @@
     //Attributs
         private string $name;
         private string $firstName;
+        private array $bookings;
 
 
     //__construct
@@ -14,13 +15,65 @@
             $this->name = $name;
             $this->firstName = $firstName;
 
+            $this->bookings = [];
         }
 
+        //Methods
 
-    //Methods
-    
+        public function addBooking(Booking $booking){
+            return $this->bookings[] = $booking;
+        }
 
-    //Gettters and Setters
+        public function countReservedRooms() { //Fonction qui compte le nombre de chambres réservées
+            $count = 0;
+            foreach ($this->bookings as $booking) {
+                $count = $booking->getNumberOfRooms();
+            }
+            return $count;
+        }
+
+        public function countTotalPrice(){
+
+            $results = 0;
+
+            foreach($this->bookings as $booking){
+                $results += $booking->countDiffPrice(); 
+            }
+
+            return $results;
+        }    
+
+        public function getCustomerBooking(){ 
+            $results = "<h2>Booking of " . $this . " :</h2>";
+            
+
+            if($this->countReservedRooms() <= 1){
+                $results .= "<span>". $this->countReservedRooms() ." booking</span>";
+            }else{
+                $results .= "<span>". $this->countReservedRooms() ." bookings</span>";
+            }
+
+            if($this->countReservedRooms() == 0){
+                $results .= "<strong><p>Aucune réservation !</p></strong>";
+            }
+
+            foreach($this->bookings as $booking){  //faire un forEach pour lire toutes les Chambres
+                    $results .= "<p><strong>Hotel : ". $booking->getHotel() . "</strong> -> " . $booking->getRoom() . " du " . $booking->getArrDate() . " au " . $booking->getDepDate() . "<br>";
+                }
+                
+                $results .= "Total : " . $this->countTotalPrice() . "$</p>";
+            return $results;
+    }
+
+        public function countCustomersRooms() { //Fonction qui compte le nombre de chambres réservées
+        $count = 0;
+        foreach ($this->bookings as $booking) {
+            $count = $booking->getNumberOfRooms();
+        }
+        return $count;
+        }
+
+    //Getters and Setters
         
         
         //Name
