@@ -8,7 +8,7 @@
         private string $nbBed;
         private float $price;
         private bool $wifi;
-        private bool $status;
+        private string $status;
         private array $bookings;
         private array $bookedRoom;
 
@@ -110,9 +110,9 @@
         public function getStatus()
         {
                 if($this->wifi == true){
-                        return "<span class='available'>AVAILEABALE</span>";
+                        return "<span class='available'>AVAILABALE</span>";
                 }else{
-                        return "<span class='unvailable'>UNAVAILEABALE</span>";
+                        return "<span class='unvailable'>UNAVAILABALE</span>";
                 }
         }
 
@@ -137,7 +137,7 @@
         }
 
         public function __toString(){
-                return "Room ". $this->nRoom . " : " . $this->nbBed . ", " . $this->price . "$, " . $this->getWifi() . ".";
+                return "Room ". $this->nRoom . " : " . $this->nbBed . ", " . $this->price . "$, " . $this->getWifi() . ",";
         }
 
          
@@ -152,8 +152,5 @@
 
                 return $this;
         }
-
-        
-        
     }
 ?>

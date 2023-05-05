@@ -1,42 +1,101 @@
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-body{
-    background-color:ghostwhite;
-    padding: 5% 10%;
-    font-family: 'Roboto', sans-serif;
+body {
+  background-color: ghostwhite;
+  padding: 5% 10%;
+  font-family: "Roboto", sans-serif;
 }
 
-h1{
-    font-size: 5em;
-    font-weight: 400;
-    margin-bottom: 50px;
+h1 {
+  font-size: 5em;
+  font-weight: 400;
+  margin-bottom: 50px;
 }
 
-h2{
-    font-size: 2.2em;
-    font-weight: 500;
+h2 {
+  font-size: 2.2em;
+  font-weight: 500;
+  margin-bottom: 10px;
 }
 
-p{  
-    font-size: larger;
-    line-height: 30px;
-    padding: 10px 0;
-    color: rgb(100, 100, 100);
-
+p {
+  font-size: larger;
+  line-height: 30px;
+  padding: 10px 0;
+  color: rgb(100, 100, 100);
 }
 
-span{
-    display: inline-block;
-    background-color: rgb(0, 197, 118);
-    color: ghostwhite;
-    border-radius: 3px;
-    padding: 2px 10px;
-    margin-top: 15px;
-    font-size: larger;
+span {
+  background-color: rgb(0, 197, 118);
+  color: ghostwhite;
+  border-radius: 3px;
+  padding: 3px 10px;
+  margin: 50px 0;
+  font-size: larger;
 }
 
+table {
+  width: 100%;
+  padding-top: 25px;
+  border-spacing: 0;
+}
 
+.available {
+  font-size: 100%;
+  min-width: 150px;
+  margin: 0;
+}
+
+.unvailable {
+  background-color: #fa3434;
+  font-size: 100%;
+  min-width: 150px;
+  margin: 0;
+}
+
+tr:first-child {
+  color: gray;
+  font-size: larger;
+  border: #fa3434 solid 3px;
+}
+
+tr {
+  width: 100%;
+}
+
+tr:nth-child(2){
+  backdrop-filter: brightness(97%);
+}
+tr:nth-child(4){
+  backdrop-filter: brightness(97%);
+}
+tr:nth-child(6){
+  backdrop-filter: brightness(97%);
+}
+tr:nth-child(8){
+  backdrop-filter: brightness(97%);
+}
+
+th {
+  height: 55px;
+  text-align: center;
+  border-bottom: lightgray solid 1px;
+  border-collapse: collapse;
+}
+
+td {
+  width: -moz-max-content;
+  width: max-content;
+  height: 55px;
+  text-align: center;
+  border-bottom: lightgray solid 1px;
+  white-space: nowrap;
+}
+
+img {
+  opacity: 60%;
+}
