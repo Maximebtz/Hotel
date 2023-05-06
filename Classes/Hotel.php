@@ -75,6 +75,7 @@
 
     public function getRoomStatus(){ //faire un forEach pour lire tout les Clients et un if / else pour marquer "Aucune réservation" si aucune n'est faite
         $results = "<h2>Rooms status of the hotel " . $this . " :</h2>
+        
         <table>
             <tr class='row-title'>
                 <th scope='col'>ROOM</th>
@@ -85,17 +86,12 @@
 
             
         foreach($this->rooms as $room){
-            if($room->getWifi() == true){
-                $icon = "<img src='./signal-wifi.png'>";
-            }else{
-                $icon = " ";
-            }  
                 $results .= "<tr>
                                 <th scope='row'>Room " . $room->getNRoom() . "</th>
                                 <td>" . $room->getPrice() . "$</td>
-                                <td>" . $icon . "</td>
+                                <td>" . $room->getWifiIcon() . "</td>
                                 <td>" .$room->getStatus() . "</td> 
-                            </tr>"; //Problème getStatut et getWifi quand il y a pas le wifi le statut change...!!!
+                            </tr>";
             } 
 
         $results .= "</table>";

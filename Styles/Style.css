@@ -68,23 +68,19 @@ tr {
 }
 
 tr:nth-child(2) {
-  -webkit-backdrop-filter: brightness(97%);
-          backdrop-filter: brightness(97%);
+  backdrop-filter: brightness(98%);
 }
 
 tr:nth-child(4) {
-  -webkit-backdrop-filter: brightness(97%);
-          backdrop-filter: brightness(97%);
+  backdrop-filter: brightness(98%);
 }
 
 tr:nth-child(6) {
-  -webkit-backdrop-filter: brightness(97%);
-          backdrop-filter: brightness(97%);
+  backdrop-filter: brightness(98%);
 }
 
 tr:nth-child(8) {
-  -webkit-backdrop-filter: brightness(97%);
-          backdrop-filter: brightness(97%);
+  backdrop-filter: brightness(98%);
 }
 
 th {
@@ -95,7 +91,6 @@ th {
 }
 
 td {
-  width: -moz-max-content;
   width: max-content;
   height: 55px;
   text-align: center;
@@ -105,4 +100,9 @@ td {
 
 img {
   opacity: 60%;
-}/*# sourceMappingURL=Style.css.map */
+}
+
+img.cross {
+    opacity: 100%;
+    filter: saturate(3) brightness(95%);
+}

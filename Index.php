@@ -27,7 +27,7 @@
             
         //New Room       
             $room1 = new Room($hotel1, "1", "2 simple bed", 120, false);
-            $room2 = new Room($hotel1, "2", "1 double bed", 120, false);
+            $room2 = new Room($hotel1, "2", "1 double bed", 140, true);
             $room3 = new Room($hotel1, "3", "1 double bed", 120, false);
             $room16 = new Room($hotel1, "16", "2 double bed", 300, true);
             $room17 = new Room($hotel1, "17", "2 double bed", 300, true);

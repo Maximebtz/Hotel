@@ -8,7 +8,7 @@
         private string $nbBed;
         private float $price;
         private bool $wifi;
-        private string $status;
+        private bool $status;
         private array $bookings;
         private array $bookedRoom;
 
@@ -21,6 +21,8 @@
             $this->price = $price;
             $this->wifi = $wifi;
             
+            $this->status = true;
+
             $this->bookings = [];
 
             $this->hotel->addRoomStatus($this);
@@ -30,9 +32,21 @@
 
     //Methods
         public function addBooking(Booking $booking){
+
+                $this->status = false;
                 return $this->bookings[] = $booking;
+
         }
 
+
+
+        public function getWifiIcon(){
+                if($this->wifi == true){
+                            return "<img src='./Img/signal-wifi.png'>";
+                        }else{
+                            return "<img class='cross' src='./Img/traverser.png'> ";
+                        } 
+        }
 
         
     //Gettters and Setters
@@ -109,7 +123,7 @@
         //Status
         public function getStatus()
         {
-                if($this->wifi == true){
+                if($this->status == true){
                         return "<span class='available'>AVAILABALE</span>";
                 }else{
                         return "<span class='unvailable'>UNAVAILABALE</span>";
