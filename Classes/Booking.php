@@ -3,7 +3,7 @@
     class Booking{
 
         
-    //Attributs
+//Attributs
         private Hotel $hotel;
         private Customer $customer;
         private Room $room;
@@ -12,28 +12,29 @@
         private DateTime $today;
 
 
-    //__construct
+//__construct
         public function __construct(Hotel $hotel, Customer $customer, Room $room, string $arrDate, string $depDate){
             
-            $this->hotel = $hotel;
-            $this->customer = $customer;
-            $this->room = $room;
-            $this->arrDate = new DateTime($arrDate);
-            $this->depDate = new DateTime($depDate);
+                $this->hotel = $hotel;
+                $this->customer = $customer;
+                $this->room = $room;
 
-            $this->today = new DateTime('now');
+                $this->arrDate = new DateTime($arrDate);
+                $this->depDate = new DateTime($depDate);
+
+                $this->today = new DateTime('now');
             
 
-            $this->hotel->addBooking($this);
-            $this->room->addBooking($this);
-            $this->room->addBookedDate($this);
-            $this->customer->addBooking($this);
+                $this->hotel->addBooking($this);
+                $this->room->addBooking($this);
+                $this->room->addBookedDate($this);
+                $this->customer->addBooking($this);
             
         //     $this->bookedRoom = [];
         }
         
         
-        //Methods
+//Methods
 
         public function getNumberOfRooms() { //Ramener le n° de chambre pour la fonction countReservedRoom()
                 return $this->room->getNRoom();
@@ -55,7 +56,7 @@
         }
         
 
-        //Getter and Setters
+//Getter and Setters
 
         //Hotel
         public function getHotel()
@@ -66,7 +67,6 @@
         public function setHotel($hotel)
         {
                 $this->hotel = $hotel;
-    
                 return $this;
         }
         
@@ -80,7 +80,6 @@
         public function setCustomer($customer)
         {
                 $this->customer = $customer;
-
                 return $this;
         }
 
@@ -93,7 +92,6 @@
         public function setRoom($room)
         {
                 $this->room = $room;
-
                 return $this;
         }
 
@@ -106,7 +104,6 @@
         public function setArrDate($arrDate)
         {
                 $this->arrDate = $arrDate;
-
                 return $this;
         }
 
@@ -122,7 +119,6 @@
         public function setDepDate($depDate)
         {
                 $this->depDate = $depDate;
-
                 return $this;
         }
 
@@ -137,7 +133,6 @@
         public function setToday($today)
         {
                 $this->today = $today;
-
                 return $this;
         }
     }

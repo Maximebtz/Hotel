@@ -2,13 +2,13 @@
 
     class Customer{
 
-    //Attributs
+//Attributs
         private string $name;
         private string $firstName;
         private array $bookings;
 
 
-    //__construct
+//__construct
 
         public function __construct(string $name, string $firstName){
 
@@ -67,7 +67,8 @@
             
 
                 return $results;
-            }
+        }
+
 
         public function countCustomersRooms() { //Fonction qui compte le nombre de chambres réservées
         $count = 0;
@@ -77,7 +78,7 @@
         return $count;
         }
 
-    //Getters and Setters
+//Getters and Setters
         
         
         //Name
@@ -89,7 +90,6 @@
         public function setFirstName($firstName)
         {
                 $this->firstName = $firstName;
-
                 return $this;
         }
 
@@ -106,6 +106,7 @@
                 return $this;
         }
 
+//__toString
         public function __toString(){
             return $this->getName() . " " . $this->getFirstName();
         }

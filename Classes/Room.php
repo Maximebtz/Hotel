@@ -2,7 +2,7 @@
 
     class Room{
 
-    //Attributs
+//Attributs
         private Hotel $hotel;
         private string $nRoom;
         private string $nbBed;
@@ -12,7 +12,8 @@
         private array $bookings;
         private array $bookedRooms;
 
-    //__construct
+
+//__construct
         public function __construct(Hotel $hotel, string $nRoom, string $nbBed, float $price, bool $wifi){
             
                 $this->hotel = $hotel;
@@ -31,7 +32,7 @@
         }
 
 
-    //Methods
+//Methods
         public function addBookedDate(Booking $bookedRoom){
                 return $this->bookedRooms[] = $bookedRoom;
         }
@@ -50,7 +51,7 @@
         }
 
         
-    //Gettters and Setters
+//Getters and Setters
 
         //Hotel
         public function getHotel()
@@ -157,21 +158,24 @@
                 return $this;
         }
 
+        
+        
+        // public function getBookedRoom()
+        // {
+                //         return $this->bookedRoom;
+                // }
+                
+                // public function setBookedRoom($bookedRoom)
+                // {
+                        //         $this->bookedRoom = $bookedRoom;
+                        
+                        //         return $this;
+                        // }
+
+                        
+//__toString
         public function __toString(){
                 return "Room ". $this->nRoom . " : " . $this->nbBed . ", " . $this->price . "$, " . $this->getWifi() . ",";
         }
-
-         
-        // public function getBookedRoom()
-        // {
-        //         return $this->bookedRoom;
-        // }
-
-        // public function setBookedRoom($bookedRoom)
-        // {
-        //         $this->bookedRoom = $bookedRoom;
-
-        //         return $this;
-        // }
     }
 ?>
