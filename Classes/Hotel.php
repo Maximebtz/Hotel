@@ -3,7 +3,6 @@
     class Hotel{
 
     //Attributs
-        private Booking $booking;
         private string $hotelName;
         private string $hotelAdress;
         private int $numberOfRoom;
@@ -65,15 +64,19 @@
                 $results .= "<strong><p>Aucune réservation !</p></strong>";
             }
 
-            foreach($this->bookings as $booking){  //faire un forEach pour lire toutes les Chambres
+            
+            foreach($this->bookings as $booking){
+                
                     $results .= "<p><strong>". $booking->getCustomer() . "</strong> - Room " . $booking->getNumberOfRooms() . " - du " . $booking->getArrDate() . " au " . $booking->getDepDate() . "</p>";
+                
                 }
                
             return $results;
             
     }
 
-    public function getRoomStatus(){ //faire un forEach pour lire tout les Clients et un if / else pour marquer "Aucune réservation" si aucune n'est faite
+
+    public function getRoomStatus(){ 
         $results = "<h2>Rooms status of the hotel " . $this . " :</h2>
         
         <table>
@@ -90,14 +93,13 @@
                                 <th scope='row'>Room " . $room->getNRoom() . "</th>
                                 <td>" . $room->getPrice() . "$</td>
                                 <td>" . $room->getWifiIcon() . "</td>
-                                <td>" .$room->getStatus() . "</td> 
+                                <td>" . $room->getStatus() . "</td> 
                             </tr>";
             } 
 
         $results .= "</table>";
 
         return $results;
-        
 }
 
     //Getters and Setters
@@ -141,20 +143,29 @@
                 return $this;
         }
 
-        //Booking
-        public function getBookings()
-        {
-                return $this->booking;
-        }
-
-        public function setBookings($booking)
-        {
-                $this->booking = $booking;
-
-                return $this;
-        }
+        
         public function __toString(){
             return $this->getHotelName();
+        }
+
+        /**
+         * Get the value of bookings
+         */ 
+        public function getBookings()
+        {
+                return $this->bookings;
+        }
+
+        /**
+         * Set the value of bookings
+         *
+         * @return  self
+         */ 
+        public function setBookings($bookings)
+        {
+                $this->bookings = $bookings;
+
+                return $this;
         }
     }
 

@@ -40,8 +40,10 @@
 
         //New Booking
             $booking1 = new Booking($hotel1, $person1, $room1, "20-05-2023", "30-05-2023");
+            $booking1 = new Booking($hotel1, $person1, $room1, "20-05-2023", "30-05-2023");
             $booking2 = new Booking($hotel1, $person1, $room2, "25-05-2023", "01-06-2023");
-            $booking2 = new Booking($hotel1, $person2, $room3, "29-05-2023", "15-06-2023");
+            $booking2 = new Booking($hotel1, $person2, $room2, "25-05-2023", "01-06-2023");
+            $booking3 = new Booking($hotel1, $person2, $room3, "29-05-2023", "15-06-2023");
 
 
 
@@ -55,6 +57,7 @@
             echo "<br><p>****************</p><br>";
             echo $hotel1->getRoomStatus();
             echo "<br><p>****************</p><br>";
+            
         ?>
     </body>
 </html>

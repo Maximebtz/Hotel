@@ -10,34 +10,35 @@
         private bool $wifi;
         private bool $status;
         private array $bookings;
-        private array $bookedRoom;
+        private array $bookedRooms;
 
     //__construct
         public function __construct(Hotel $hotel, string $nRoom, string $nbBed, float $price, bool $wifi){
             
-            $this->hotel = $hotel;
-            $this->nRoom = $nRoom;
-            $this->nbBed = $nbBed;
-            $this->price = $price;
-            $this->wifi = $wifi;
+                $this->hotel = $hotel;
+                $this->nRoom = $nRoom;
+                $this->nbBed = $nbBed;
+                $this->price = $price;
+                $this->wifi = $wifi;
             
-            $this->status = true;
+                $this->status = true;
 
-            $this->bookings = [];
-
-            $this->hotel->addRoomStatus($this);
+                $this->bookings = [];
+                $this->bookedRooms = [];  
+                      
+                $this->hotel->addRoomStatus($this);
             
         }
 
 
     //Methods
+        public function addBookedDate(Booking $bookedRoom){
+                return $this->bookedRooms[] = $bookedRoom;
+        }
         public function addBooking(Booking $booking){
-
                 $this->status = false;
                 return $this->bookings[] = $booking;
-
         }
-
 
 
         public function getWifiIcon(){
@@ -121,6 +122,12 @@
         }
 
         //Status
+
+        
+        // public function getStatusToday(){
+        //         return $this->getStatus() == $this->getHotel()->getBookings()->getToday();
+        // }
+        
         public function getStatus()
         {
                 if($this->status == true){
@@ -155,16 +162,16 @@
         }
 
          
-        public function getBookedRoom()
-        {
-                return $this->bookedRoom;
-        }
+        // public function getBookedRoom()
+        // {
+        //         return $this->bookedRoom;
+        // }
 
-        public function setBookedRoom($bookedRoom)
-        {
-                $this->bookedRoom = $bookedRoom;
+        // public function setBookedRoom($bookedRoom)
+        // {
+        //         $this->bookedRoom = $bookedRoom;
 
-                return $this;
-        }
+        //         return $this;
+        // }
     }
 ?>

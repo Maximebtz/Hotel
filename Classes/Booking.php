@@ -9,7 +9,7 @@
         private Room $room;
         private DateTime $arrDate;
         private DateTime $depDate;
-        // private array $bookedRoom;
+        private DateTime $today;
 
 
     //__construct
@@ -20,10 +20,13 @@
             $this->room = $room;
             $this->arrDate = new DateTime($arrDate);
             $this->depDate = new DateTime($depDate);
+
+            $this->today = new DateTime('now');
             
 
             $this->hotel->addBooking($this);
             $this->room->addBooking($this);
+            $this->room->addBookedDate($this);
             $this->customer->addBooking($this);
             
         //     $this->bookedRoom = [];
@@ -36,17 +39,20 @@
                 return $this->room->getNRoom();
         }
         
+        public function getDate(){
+                return " du ". $this->getArrDate() . " au " . $this->getDepDate();
+        }
+
         public function countDiffPrice(){
 
                 $arr = $this->arrDate;
                 $dep = $this->depDate;
                 $diff = date_diff($arr, $dep);
-                $price = $diff->format("%a") * $this->room->getPrice();
+                $price = $diff->format("%a") * $this->room->getPrice(); //%a difference nm jours
                 
                 return $price;
 
         }
-
         
 
         //Getter and Setters
@@ -105,14 +111,32 @@
         }
 
         //Departure Date
-        public function getDepDate()
-        {
-                return $this->depDate->format("d-m-Y");
+        public function getDepDate(){       
+                if($this->depDate < $this->arrDate){
+                        return "<p>Vous ne pouvez pas mettre la date de départ avant la date d'arrivé.</p>";
+                }else{
+                        return $this->depDate->format("d-m-Y");
+                }
         }
 
         public function setDepDate($depDate)
         {
                 $this->depDate = $depDate;
+
+                return $this;
+        }
+
+        
+        //Today
+        public function getToday()
+        {
+                return $this->today->format("d-m-Y");
+        }
+
+        
+        public function setToday($today)
+        {
+                $this->today = $today;
 
                 return $this;
         }
